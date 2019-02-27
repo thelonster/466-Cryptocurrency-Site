@@ -1,0 +1,47 @@
+.box1{
+    background: linear-gradient(180deg, #007bff 15%, #2cabff, #2cd2e8);
+    color: white;
+    opacity: 0.95;
+    background-attachment: fixed;
+}
+
+.rounded {
+    border-radius: 25px;
+    background: #FFFFFF;
+    padding: 20px; 
+    width: 200px;
+    height: 150px; 
+  }
+
+  .navformat{
+      padding-left: 15%;
+      padding-right: 15%;
+  }
+
+  .navspacing{
+      padding-left: 35px;
+  }
+
+  .softpad{
+    padding-top:40px; 
+    padding-bottom: 80px;
+  }
+
+  .softpad2{
+    padding-top:120px; 
+    padding-bottom: 120px;
+  }
+
+  /* Rules for sizing the icon. */
+.material-icons.md-18 { font-size: 18px; padding: 10px;}
+.material-icons.md-24 { font-size: 24px; padding: 10px;}
+.material-icons.md-36 { font-size: 36px; padding: 10px;}
+.material-icons.md-48 { font-size: 48px; padding: 10px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
