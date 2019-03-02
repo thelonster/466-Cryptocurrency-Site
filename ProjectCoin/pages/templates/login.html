@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div style="padding-top: 180px;">
+    <h1>
+       <center>
+            Welcome <em>back</em>.
+       </center>
+    </h1>
+    <div class="container text-dark" style="border-radius: 7px; padding-top: 20px;">
+        <div class="row" style="border-radius: 7px;">
+            <div class="col"></div>
+            <div class="col-sm-5 text-dark bg-white softpad" style="border-radius: 7px; padding-left: 40px; padding-right: 40px;">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Signin</button>
+                </form>
+            </div>
+            <div class="col"></div>
+        </div>
+       
+    </div>
+    <p>
+            <center>Don't have an account? <a href="{% url 'register' %}">Signup here.</a></center>
+        </p>
+</div>
+
+{% endblock %}
