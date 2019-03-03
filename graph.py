@@ -2,6 +2,8 @@ import requests
 import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
+import plotly.plotly as py
+import plotly.graph_objs as go
 
 def get_df(from_date, to_date, coin):
     """ Get historical price data between two dates. """
@@ -20,9 +22,9 @@ def get_df(from_date, to_date, coin):
     # Convert to timestamp to readable date format
     df['time'] = pd.to_datetime(df['time'], unit='s')
     # Make the DataFrame index the time
-    df.set_index('time', inplace=True)
+    #df.set_index('time', inplace=True)
     # And sort it so its in time order
-    df.sort_index(ascending=False, inplace=True)
+    #df.sort_index(ascending=False, inplace=True)
     return df
 
 
@@ -33,7 +35,38 @@ def get_data(date, coin):
     ipdata = r.json()
     return ipdata
 
+to_date = 1514764800
+from_date = 1560000000
+btcdf = get_df(to_date, from_date, "BTC")
+# print(btcdf['time'])
 
+
+low = go.Scatter(
+    x = btcdf['time'],
+    y = btcdf['low'],
+    mode = 'lines',
+    name = 'low'
+)
+
+close = go.Scatter(
+    x = btcdf['time'],
+    y = btcdf['close'],
+    mode = 'lines',
+    name = 'close'
+)
+
+high = go.Scatter(
+    x = btcdf['time'],
+    y = btcdf['high'],
+    mode = 'lines',
+    name = 'high'
+)
+
+btcdata = [low, close, high]
+
+py.plot(btcdata, filename='BTC')
+
+'''
 to_date = 1514764800
 from_date = 1560000000
 df = get_df(to_date, from_date, "BTC")
@@ -59,3 +92,4 @@ ax3.set_ylabel('LTC Price (USD)')
 ax3.set_xlabel('Date')
 ax3.legend(['Low', 'Close', 'High']);
 plt.show()
+'''
