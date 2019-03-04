@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import JsonResponse
+from .graph import get_df
 
 # Create your views here.
 def index(request):
@@ -19,3 +21,6 @@ def bitcoin(request):
 def litecoin(request):
     return render(request, "litecoin.html",{})
 
+def get_crypto_data(request, *args):
+    data = get_df(1514764800, 1560000000, 'BTC')
+    return JsonResponse(data, safe=False)
