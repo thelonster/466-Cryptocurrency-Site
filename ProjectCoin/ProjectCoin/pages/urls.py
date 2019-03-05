@@ -10,7 +10,8 @@ urlpatterns = [
     path('register/', views.register, name="register"),
     path('login/', views.login, name="login"),
     path('bitcoin/', views.bitcoin, name="bitcoin"),
-    path('litecoin/', views.litecoin, name="litecoin"),
+    path('litecoin/', views.litecoin, name="litecoin")
     path('ethereum/', views.ethereum, name="ethereum"),
+    path('dashboard/', views.dashboard, name="dashboard"),
     url(r'api/cryptodata/$', get_crypto_data, name='crypto-data')
 ]

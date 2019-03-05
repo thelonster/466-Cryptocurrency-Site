@@ -23,6 +23,9 @@ def litecoin(request):
 
 def ethereum(request):
     return render(request, "ethereum.html",{})
+  
+def dashboard(request):
+    return render(request, "dashboard.html",{})
 
 def get_crypto_data(request, *args):
     coin = request.get_full_path()
