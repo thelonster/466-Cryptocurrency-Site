@@ -33,7 +33,8 @@ def get_data(date, coin):
     ipdata = r.json()
     return ipdata
 
-to_date = 1514764800
+to_date = 1514700000#1514764800
+#to_date = pd.to_datetime(to_date, unit='s')
 from_date = 1560000000
 btcdf = get_df(to_date, from_date, "BTC")
 #test = json.loads(btcdf)

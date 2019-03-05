@@ -22,5 +22,5 @@ def litecoin(request):
     return render(request, "litecoin.html",{})
 
 def get_crypto_data(request, *args):
-    data = get_df(1514764800, 1560000000, 'BTC')
+    data = get_df(1546290000, 1560000000, 'BTC')
     return JsonResponse(data, safe=False)
