@@ -21,6 +21,11 @@ def bitcoin(request):
 def litecoin(request):
     return render(request, "litecoin.html",{})
 
+def ethereum(request):
+    return render(request, "ethereum.html",{})
+
 def get_crypto_data(request, *args):
-    data = get_df(1546290000, 1560000000, 'BTC')
+    coin = request.get_full_path()
+    coin = coin[-3:]
+    data = get_df(1546290000, 1560000000, coin)
     return JsonResponse(data, safe=False)

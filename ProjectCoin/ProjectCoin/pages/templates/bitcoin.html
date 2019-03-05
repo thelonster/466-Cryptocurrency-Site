@@ -10,9 +10,9 @@ var labels = [`low`, 'close', 'high'];
 $.ajax({
     method: "GET",
     url: endpoint,
-    success: function(data){
-        defaultData = data
-        //console.log(data)
+    data: 'BTC',
+    success: function(result){
+        defaultData = result
         createGraph()
     },
     error: function(err_data){
@@ -29,13 +29,11 @@ function createGraph(){
     var tempData = jsonData.data;
     var indices = jsonData.index;
     var size = Object.keys(tempData).length;
-    console.log(size)
     for (var a = 0; a < size; a++) {
         close.push(tempData[a][0]);
         low.push(tempData[a][2]);
         high.push(tempData[a][1]);
     }
-    console.log(close);
     var g1 = document.getElementById("BTCgraph");
     var graph = new Chart(g1, {
         type: 'line',

@@ -11,5 +11,6 @@ urlpatterns = [
     path('login/', views.login, name="login"),
     path('bitcoin/', views.bitcoin, name="bitcoin"),
     path('litecoin/', views.litecoin, name="litecoin"),
+    path('ethereum/', views.ethereum, name="ethereum"),
     url(r'api/cryptodata/$', get_crypto_data, name='crypto-data')
 ]
