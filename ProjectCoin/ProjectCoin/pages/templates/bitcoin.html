@@ -2,15 +2,77 @@
 
 {% block title %}Bitcoin (BTC){% endblock %}
 
+<script>
+{% block jquery%}
+var endpoint = 'api/cryptodata/'
+var defaultData = []
+var labels = [`low`, 'close', 'high'];
+$.ajax({
+    method: "GET",
+    url: endpoint,
+    data: 'BTC',
+    success: function(result){
+        defaultData = result
+        createGraph()
+    },
+    error: function(err_data){
+        console.log("error")
+        console.log(err_data)
+    }
+})
+
+function createGraph(){
+    var close = [];
+    var low = [];
+    var high = [];
+    var jsonData = JSON.parse(defaultData);
+    var tempData = jsonData.data;
+    var indices = jsonData.index;
+    var size = Object.keys(tempData).length;
+    for (var a = 0; a < size; a++) {
+        close.push(tempData[a][0]);
+        low.push(tempData[a][2]);
+        high.push(tempData[a][1]);
+    }
+    var g1 = document.getElementById("BTCgraph");
+    var graph = new Chart(g1, {
+        type: 'line',
+        data: {
+            labels: indices,
+            datasets: [
+              {
+                label: "close",
+                data: close,
+                backgroundColor: 'rgba(232, 228, 33, 0.2)',
+                borderColor: 'rgba(232, 228, 33, 1)'
+              },
+              {
+                label: "low",
+                data: low,
+                backgroundColor: 'rgba(255, 10, 10, 0.2)',
+                borderColor: 'rgba(255, 10, 10, 1)'
+              },
+              {
+                label: "high",
+                data: high,
+                backgroundColor: 'rgba(10, 255, 10, 0.2)',
+                borderColor: 'rgba(10, 255, 10, 1)'
+              }
+            ]
+        }
+    })
+}
+{% endblock %}
+</script>
+
 {% block graph %}
-<!-- Graph Data would go in here-->
-Graph goes here.
+<canvas id="BTCgraph"></canvas>
 {% endblock %}
 
 {% block title2 %}Bitcoin{% endblock %}
 
 {% block right %}
-Maecenas finibus fermentum arcu vel molestie. Etiam non justo a magna posuere ornare. 
+Maecenas finibus fermentum arcu vel molestie. Etiam non justo a magna posuere ornare.
 {% endblock %}
 
 {% block left%}
