@@ -19,3 +19,5 @@ def bitcoin(request):
 def litecoin(request):
     return render(request, "litecoin.html",{})
 
+def dashboard(request):
+    return render(request, "dashboard.html",{})
