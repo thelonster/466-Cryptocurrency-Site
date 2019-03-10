@@ -2,6 +2,72 @@
 
 {% block content %}
 
+<div class="container bg-light" style="padding-top: 55px; padding-bottom: 20px; border-radius: 7px;">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
+        <a class="navbar-brand" href="#">Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+    </nav>
+
+    <div class="spacer" style="padding-top: 25px; padding-bottom: 25px;"> </div>
+
+
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Following <i class="fas fa-star"></i></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Discover <i class="fas fa-search-dollar"></i></a>
+        </li>
+    </ul>
+    <div class="row-sm-12"> <!-- Each row can hold 3 currencies-->
+        <div class="card-group text-dark">
+            <!-- One Card is One Currency -->
+            <div class="card">
+                <!--Graph would go here-->
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <!--Coin Name would go here -->
+                    </h5>
+                    <p class="card-text">Price:
+                        <!-- Price here -->
+                    </p>
+                    <small class="text-muted">Last updated 3 mins ago</small> <!-- Hopefully we can pull when it was last updated, if not we can delete this section-->
+                </div>
+            </div>
+            <!-- One Card is One Currency -->
+            <div class="card">
+                <!--Graph would go here-->
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <!--Coin Name would go here -->
+                    </h5>
+                    <p class="card-text">Price:
+                        <!-- Price here -->
+                    </p>
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+            <!-- One Card is One Currency -->
+            <div class="card">
+                <!--Graph would go here-->
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <!--Coin Name would go here -->
+                    </h5>
+                    <p class="card-text">Price:
+                        <!-- Price here -->
+                    </p>
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
 
 
 {% endblock %}

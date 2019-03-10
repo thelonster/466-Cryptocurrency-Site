@@ -1,68 +1,71 @@
 {% extends 'coinbase.html' %}
 
-{% block title %}Litecoin{% endblock %}
+{% block title %}Litecoin (LTC){% endblock %}
 
 <script>
-{% block jquery%}
-var endpoint = 'api/cryptodata/'
-var defaultData = []
-var labels = [`low`, 'close', 'high'];
-$.ajax({
-    method: "GET",
-    url: endpoint,
-    data: 'LTC',
-    success: function(result){
-        defaultData = result
-        createGraph()
-    },
-    error: function(err_data){
-        console.log("error")
-        console.log(err_data)
-    }
-})
-
-function createGraph(){
-    var close = [];
-    var low = [];
-    var high = [];
-    var jsonData = JSON.parse(defaultData);
-    var tempData = jsonData.data;
-    var indices = jsonData.index;
-    var size = Object.keys(tempData).length;
-    for (var a = 0; a < size; a++) {
-        close.push(tempData[a][0]);
-        low.push(tempData[a][2]);
-        high.push(tempData[a][1]);
-    }
-    var g1 = document.getElementById("LTCgraph");
-    var graph = new Chart(g1, {
-        type: 'line',
-        data: {
-            labels: indices,
-            datasets: [
-              {
-                label: "close",
-                data: close,
-                backgroundColor: 'rgba(232, 228, 33, 0.2)',
-                borderColor: 'rgba(232, 228, 33, 1)'
-              },
-              {
-                label: "low",
-                data: low,
-                backgroundColor: 'rgba(255, 10, 10, 0.2)',
-                borderColor: 'rgba(255, 10, 10, 1)'
-              },
-              {
-                label: "high",
-                data: high,
-                backgroundColor: 'rgba(10, 255, 10, 0.2)',
-                borderColor: 'rgba(10, 255, 10, 1)'
-              }
-            ]
+    {% block jquery %}
+    var endpoint = 'api/cryptodata/'
+    var defaultData = []
+    var labels = [`low`, 'close', 'high'];
+    $.ajax({
+        method: "GET",
+        url: endpoint,
+        data: 'LTC',
+        success: function (result) {
+            defaultData = result
+            createGraph()
+        },
+        error: function (err_data) {
+            console.log("error")
+            console.log(err_data)
         }
     })
-}
-{% endblock %}
+
+    function createGraph() {
+        var close = [];
+        var low = [];
+        var high = [];
+        var jsonData = JSON.parse(defaultData);
+        var tempData = jsonData.data;
+        var indices = jsonData.index;
+        var size = Object.keys(tempData).length;
+        for (var a = 0; a < size; a++) {
+            close.push(tempData[a][0]);
+            low.push(tempData[a][2]);
+            high.push(tempData[a][1]);
+        }
+        var g1 = document.getElementById("LTCgraph");
+        var graph = new Chart(g1, {
+            type: 'line',
+            data: {
+                labels: indices,
+                datasets: [
+                    {
+                        label: "close",
+                        fill: false,
+                        data: close,
+                        backgroundColor: 'rgba(232, 228, 33, 0.2)',
+                        borderColor: 'rgba(232, 228, 33, 1)'
+                    },
+                    {
+                        label: "low",
+                        fill: false,
+                        data: low,
+                        backgroundColor: 'rgba(255, 10, 10, 0.2)',
+                        borderColor: 'rgba(255, 10, 10, 1)'
+                    },
+                    {
+                        label: "high",
+                        fill: false,
+                        data: high,
+                        backgroundColor: 'rgba(10, 255, 10, 0.2)',
+                        borderColor: 'rgba(10, 255, 10, 1)'
+                    }
+                ]
+            }
+        })
+    }
+    {% endblock %}
 </script>
 
 {% block graph %}
@@ -73,10 +76,26 @@ function createGraph(){
 
 
 
-{% block right %}
-Maecenas finibus fermentum arcu vel molestie. Etiam non justo a magna posuere ornare.
+{% block compare %}
+
+
 {% endblock %}
 
-{% block left%}
-Nunc egestas tristique pulvinar. Vivamus aliquam euismod nibh vel efficitur. Maecenas finibus fermentum arcu vel molestie. Etiam non justo a magna posuere ornare. Praesent ac augue sit amet nisl vulputate pellentesque vel at tellus.
+{% block about %}
+Litecoin is a revloutionary technology that has the ability to greatly enhance the lives of those with access to it.
+Litecoin is a powerful tool for economic, social and political change that hands power back to individuals in a way
+we
+have not seen before. With decentralised systems of finance there are no gods or kings and no one to censor
+transactions or financial activities. We are living in exciting times and believe everyone should have access to
+the
+new age of finance.
+
+<br><em><small class="text-muted">All information taken from the official <a href="https://litecoin.com/en/">Litecoin</a>
+        webpage.</small> </em>
+{% endblock %}
+
+{% block quote %}
+<p class="mb-0">“Litecoin is a powerful, political and economical tool which anyone, anywhere can use without
+    permission to transact with anyone else in the world and partake in a genuinely global economy.”</p>
+<footer class="blockquote-footer">Franklyn Richards, <cite title="Source Title">CEO Litecoin Haus</cite></footer>
 {% endblock %}

@@ -42,18 +42,21 @@ function createGraph(){
             datasets: [
               {
                 label: "close",
+                fill: false,
                 data: close,
                 backgroundColor: 'rgba(232, 228, 33, 0.2)',
                 borderColor: 'rgba(232, 228, 33, 1)'
               },
               {
                 label: "low",
+                fill: false,
                 data: low,
                 backgroundColor: 'rgba(255, 10, 10, 0.2)',
                 borderColor: 'rgba(255, 10, 10, 1)'
               },
               {
                 label: "high",
+                fill: false,
                 data: high,
                 backgroundColor: 'rgba(10, 255, 10, 0.2)',
                 borderColor: 'rgba(10, 255, 10, 1)'
@@ -73,10 +76,13 @@ function createGraph(){
 
 
 
-{% block right %}
+{% block compare  %}
 Maecenas finibus fermentum arcu vel molestie. Etiam non justo a magna posuere ornare.
 {% endblock %}
 
-{% block left%}
+{% block about %}
 Nunc egestas tristique pulvinar. Vivamus aliquam euismod nibh vel efficitur. Maecenas finibus fermentum arcu vel molestie. Etiam non justo a magna posuere ornare. Praesent ac augue sit amet nisl vulputate pellentesque vel at tellus.
+{% endblock %}
+
+{% block quote%} none
 {% endblock %}
