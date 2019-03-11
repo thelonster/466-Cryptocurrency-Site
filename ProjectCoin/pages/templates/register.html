@@ -11,29 +11,19 @@
             <div class="row" style="border-radius: 7px;">
                 <div class="col"></div>
                 <div class="col-sm-5 text-dark bg-white softpad" style="border-radius: 7px; padding-left: 40px; padding-right: 40px;">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                                placeholder="Enter email">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                                else.</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                                <label for="exampleInputPassword1">Confirm Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">
-                            </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">I agree to the <a href="#">terms and
-                                    conditions.</a></label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Register</button>
-                    </form>
+                    {% if registered %}
+                      <h1>Thank you for registering!</h1>
+                    {% else %}
+                      <h1>Register Here</h1>
+                      <h3>Just fill out the form.</h3>
+                      <form enctype="multipart/form-data" method="POST">
+                        {% csrf_token %}
+                        {{ user_form.as_p }}
+          
+                        <input type="submit" name="" value="Register">
+                      </form>
+        
+                    {% endif %}
                 </div>
                 <div class="col"></div>
             </div>
