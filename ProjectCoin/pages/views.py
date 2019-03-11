@@ -1,36 +1,32 @@
 from django.shortcuts import render, redirect
-#from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.decorators import login_required
-from django.contrib import auth
-from .verify import customerForm
+from django.http import JsonResponse
+from .graph import get_df
+from .forms import UserRegister
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponseRedirect, HttpResponse
+from django.urls import reverse
 
 # Create your views here.
 def index(request):
     return render(request, "index.html", {})
 
 def register(request):
+    registered=False
     if request.method == 'POST':
-        verification = customerForm(request.POST)
-        if verification.is_valid():
-            verification.save()
-            return redirect('register')
+        user_form = UserRegister(data=request.POST)
+        if user_form.is_valid():
+            user = user_form.save()
+            user.set_password(user.password)
+            user.save()
+            registered=True
         else:
-            verification =customerForm()
-    return render(request,'register.html',{})
+            print(user_form.errors)
+    else:
+        user_form = UserRegister()
+    return render(request, "register.html", {'user_form':user_form, 'registered':registered})
 
-def login(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        user = auth.authenticate(email = email, password = password)
-
-        if user is not None:
-            auth.login(request, user)
-            return redirect('dashboard')
-        else:
-            return redirect('login.html')
-    return render(request, "login.html", {})
+#def login(request):
+    #return render(request, "login.html", {})
 
 def about(request):
     return render(request, "about.html",{})
@@ -41,7 +37,14 @@ def bitcoin(request):
 def litecoin(request):
     return render(request, "litecoin.html",{})
 
+def ethereum(request):
+    return render(request, "ethereum.html",{})
+  
 def dashboard(request):
-    if not request.user.is_authenicated():
-        return redirect('login.html')
-    return render(request, "dashboard.html", {})
+    return render(request, "dashboard.html",{})
+
+def get_crypto_data(request, *args):
+    coin = request.get_full_path()
+    coin = coin[-3:]
+    data = get_df(1546290000, 1560000000, coin)
+    return JsonResponse(data, safe=False)
