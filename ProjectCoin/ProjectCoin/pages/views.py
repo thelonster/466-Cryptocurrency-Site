@@ -1,4 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+#from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from .verify import customerForm
 from django.http import JsonResponse
 from datetime import datetime, timezone
 from .graph import get_df
@@ -8,7 +12,14 @@ def index(request):
     return render(request, "index.html", {})
 
 def register(request):
-    return render(request, "register.html",{})
+    if request.method == 'POST':
+        verification = customerForm(request.POST)
+        if verification.is_valid():
+            verification.save()
+            return redirect('register')
+        else:
+            verification =customerForm()
+    return render(request,'register.html',{})
 
 def login(request):
     return render(request, "login.html", {})
