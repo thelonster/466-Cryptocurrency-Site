@@ -4,118 +4,26 @@
 
 <script>
 {% block jquery%}
-var endpoint = 'api/hourdata/'
-var defaultData = []
-var labels = [`low`, 'close', 'high'];
-$.ajax({
-    method: "GET",
-    url: endpoint,
-    data: 'BTC',
-    success: function(result){
-        defaultData = result
-        createGraph()
-    },
-    error: function(err_data){
-        console.log("error")
-        console.log(err_data)
-    }
-})
-
-function createGraph(){
-    var close = [];
-    var low = [];
-    var high = [];
-    var jsonData = JSON.parse(defaultData);
-    var tempData = jsonData.data;
-    var indices = jsonData.index;
-    var size = Object.keys(tempData).length;
-    for (var a = 0; a < size; a++) {
-        close.push(tempData[a][0]);
-        low.push(tempData[a][2]);
-        high.push(tempData[a][1]);
-    }
-    var g1 = document.getElementById("BTCgraph");
-    var graph = new Chart(g1, {
-        type: 'line',
-        data: {
-            labels: indices,
-            datasets: [
-              {
-                label: "close",
-                data: close,
-                fill: false,
-                borderColor: 'rgba(0, 0, 0, 1)',
-                lineTension: 0
-              },
-              {
-                label: "low",
-                data: low,
-                fill: false,
-                borderColor: 'rgba(255, 165, 0, 1)',
-                lineTension: 0
-              },
-              {
-                label: "high",
-                data: high,
-                fill: false,
-                borderColor: 'rgba(0, 255, 0, 1)',
-                lineTension: 0
-              }
-            ]
-        }
-    })
-
-    function createGraph() {
-        var close = [];
-        var low = [];
-        var high = [];
-        var jsonData = JSON.parse(defaultData);
-        var tempData = jsonData.data;
-        var indices = jsonData.index;
-        var size = Object.keys(tempData).length;
-        for (var a = 0; a < size; a++) {
-            close.push(tempData[a][0]);
-            low.push(tempData[a][2]);
-            high.push(tempData[a][1]);
-        }
-        var g1 = document.getElementById("BTCgraph");
-        var graph = new Chart(g1, {
-            type: 'line',
-            data: {
-                labels: indices,
-                datasets: [
-                    {
-                        label: "Close",
-                        fill: false,
-                        data: close,
-                        backgroundColor: 'rgba(232, 228, 33, 0.2)',
-                        borderColor: 'rgba(232, 228, 33, 1)'
-                    },
-                    {
-                        label: "Low",
-                        fill: false,
-                        data: low,
-                        backgroundColor: 'rgba(255, 10, 10, 0.2)',
-                        borderColor: 'rgba(255, 10, 10, 1)'
-                    },
-                    {
-                        label: "High",
-                        fill: false,
-                        data: high,
-                        backgroundColor: 'rgba(10, 255, 10, 0.2)',
-                        borderColor: 'rgba(10, 255, 10, 1)'
-                    }
-                ]
-            }
-        })
-    }
-    {% endblock %}
+createDayGraph('BTC');
+$(".hour").click(function(){
+  createHourGraph('BTC');
+});
+$(".day").click(function(){
+  createDayGraph('BTC');
+});
+$(".week").click(function(){
+  createWeekGraph('BTC');
+});
+$(".month").click(function(){
+  createMonthGraph('BTC');
+});
+{% endblock %}
 </script>
 
 {% block title2 %}Bitcoin{% endblock %}
 
 {% block graph %}
-<canvas id="BTCgraph" style="padding: 5px;"></canvas>
+<canvas id="graph" style="padding: 5px;"></canvas>
 {% endblock %}
 
 

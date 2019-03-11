@@ -4,72 +4,24 @@
 
 <script>
 {% block jquery%}
-var endpoint = 'api/cryptodata/'
-var defaultData = []
-var labels = [`low`, 'close', 'high'];
-$.ajax({
-    method: "GET",
-    url: endpoint,
-    data: 'ETH',
-    success: function(result){
-        defaultData = result
-        createGraph()
-    },
-    error: function(err_data){
-        console.log("error")
-        console.log(err_data)
-    }
-})
-
-function createGraph(){
-    var close = [];
-    var low = [];
-    var high = [];
-    var jsonData = JSON.parse(defaultData);
-    var tempData = jsonData.data;
-    var indices = jsonData.index;
-    var size = Object.keys(tempData).length;
-    for (var a = 0; a < size; a++) {
-        close.push(tempData[a][0]);
-        low.push(tempData[a][2]);
-        high.push(tempData[a][1]);
-    }
-    var g1 = document.getElementById("ETHgraph");
-    var graph = new Chart(g1, {
-        type: 'line',
-        data: {
-            labels: indices,
-            datasets: [
-              {
-                label: "close",
-                fill: false,
-                data: close,
-                backgroundColor: 'rgba(232, 228, 33, 0.2)',
-                borderColor: 'rgba(232, 228, 33, 1)'
-              },
-              {
-                label: "low",
-                fill: false,
-                data: low,
-                backgroundColor: 'rgba(255, 10, 10, 0.2)',
-                borderColor: 'rgba(255, 10, 10, 1)'
-              },
-              {
-                label: "high",
-                fill: false,
-                data: high,
-                backgroundColor: 'rgba(10, 255, 10, 0.2)',
-                borderColor: 'rgba(10, 255, 10, 1)'
-              }
-            ]
-        }
-    })
-}
+createDayGraph('ETH');
+$(".hour").click(function(){
+  createHourGraph('ETH');
+});
+$(".day").click(function(){
+  createDayGraph('ETH');
+});
+$(".week").click(function(){
+  createWeekGraph('ETH');
+});
+$(".month").click(function(){
+  createMonthGraph('ETH');
+});
 {% endblock %}
 </script>
 
 {% block graph %}
-<canvas id="ETHgraph"></canvas>
+<canvas id="graph"></canvas>
 {% endblock %}
 
 {% block title2 %}Ethereum{% endblock %}
