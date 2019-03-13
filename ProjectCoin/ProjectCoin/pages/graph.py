@@ -56,17 +56,3 @@ def get_minute_data(coin):
     r = requests.get(url)
     ipdata = r.json()
     return ipdata
-
-"""
-today = datetime.today()
-timestamp = today.timestamp()
-timestamp = int(timestamp)
-yesterday = timestamp - 86400
-to_date = 1514700000#1514764800
-#to_date = pd.to_datetime(to_date, unit='s')
-from_date = 1560000000
-btcdf = get_df(yesterday, timestamp, "BTC", "hour")
-#print(test)
-print(btcdf)
-#print(len(test['data']))
-"""
