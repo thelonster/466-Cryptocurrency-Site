@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load staticfiles %}
 {% block content %}
 <div style="padding-top: 180px;">
         <h1>
@@ -10,16 +10,17 @@
         <div class="container text-dark" style="border-radius: 7px; padding-top: 20px;">
             <div class="row" style="border-radius: 7px;">
                 <div class="col"></div>
-                <div class="col-sm-5 text-dark bg-white softpad" style="border-radius: 7px; padding-left: 40px; padding-right: 40px;">
+                <div class="col-sm-5 text-dark bg-white softpad" style="border-radius: 10px; padding-left: 40px; padding-right: 40px;">
                     {% if registered %}
                       <h1>Thank you for registering!</h1>
                     {% else %}
                       <h1>Register Here</h1>
-                      <h3>Just fill out the form.</h3>
-                      <form enctype="multipart/form-data" method="POST">
+                      <form method="POST">
                         {% csrf_token %}
                         {{ user_form.as_p }}
-          
+                        <style>
+                        .helptext{ visibility: hidden};
+                        </style>
                         <input type="submit" name="" value="Register">
                       </form>
         
@@ -30,7 +31,7 @@
            
         </div>
         <p>
-                <center>Already have an account? <a href="{% url 'login' %}">Login here.</a></center>
+                <center>Already have an account? <a href="{% url 'user_login' %}">Login here.</a></center>
             </p>
     </div>
 

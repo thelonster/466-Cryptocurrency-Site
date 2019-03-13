@@ -12,16 +12,17 @@
         <div class="row" style="border-radius: 7px;">
             <div class="col"></div>
             <div class="col-sm-5 text-dark bg-white softpad" style="border-radius: 7px; padding-left: 40px; padding-right: 40px;">
-                <form>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
+                <form method = "post" action="{% url 'user_login' %}">
+                    {% csrf_token %}
+                    
+                        <label for="exampleInputEmail1">Username</label>
+                        <input type="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Enter username">
+                    
+                    
                         <label for="exampleInputPassword1">Password</label>
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
+                    
                     <button type="submit" class="btn btn-primary">Signin</button>
                 </form>
             </div>
