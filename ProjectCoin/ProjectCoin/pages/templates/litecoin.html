@@ -1,20 +1,53 @@
 {% extends 'coinbase.html' %}
 
-{% block title %}Litecoin{% endblock %}
+{% block title %}Litecoin (LTC){% endblock %}
+
+<script>
+{% block jquery %}
+createDayGraph('LTC');
+$(".hour").click(function(){
+  createHourGraph('LTC');
+});
+$(".day").click(function(){
+  createDayGraph('LTC');
+});
+$(".week").click(function(){
+  createWeekGraph('LTC');
+});
+$(".month").click(function(){
+  createMonthGraph('LTC');
+});
+{% endblock %}
+</script>
 
 {% block graph %}
-<!-- Graph Data would go in here-->
-Graph goes here.
+<canvas id="graph"></canvas>
 {% endblock %}
 
 {% block title2 %}Litecoin{% endblock %}
 
 
 
-{% block right %}
-Maecenas finibus fermentum arcu vel molestie. Etiam non justo a magna posuere ornare. 
+{% block compare %}
+
+
 {% endblock %}
 
-{% block left%}
-Nunc egestas tristique pulvinar. Vivamus aliquam euismod nibh vel efficitur. Maecenas finibus fermentum arcu vel molestie. Etiam non justo a magna posuere ornare. Praesent ac augue sit amet nisl vulputate pellentesque vel at tellus.
+{% block about %}
+Litecoin is a revloutionary technology that has the ability to greatly enhance the lives of those with access to it.
+Litecoin is a powerful tool for economic, social and political change that hands power back to individuals in a way
+we
+have not seen before. With decentralised systems of finance there are no gods or kings and no one to censor
+transactions or financial activities. We are living in exciting times and believe everyone should have access to
+the
+new age of finance.
+
+<br><em><small class="text-muted">All information taken from the official <a href="https://litecoin.com/en/">Litecoin</a>
+        webpage.</small> </em>
+{% endblock %}
+
+{% block quote %}
+<p class="mb-0">“Litecoin is a powerful, political and economical tool which anyone, anywhere can use without
+    permission to transact with anyone else in the world and partake in a genuinely global economy.”</p>
+<footer class="blockquote-footer">Franklyn Richards, <cite title="Source Title">CEO Litecoin Haus</cite></footer>
 {% endblock %}
