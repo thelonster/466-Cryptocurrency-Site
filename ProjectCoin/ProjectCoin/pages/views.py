@@ -24,6 +24,9 @@ def register(request):
 def login(request):
     return render(request, "login.html", {})
 
+def coins(request):
+    return render(request, "coins.html",{})
+
 def about(request):
     return render(request, "about.html",{})
 
