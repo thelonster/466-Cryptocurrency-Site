@@ -1,0 +1,54 @@
+<!-- This is  the .html for the Coins page on the navbar, not the base template for the coin pages -->
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container softpad2 text-muted">
+    <div class="row">
+        <div class="col bg-white" style="padding-top: 20px; padding-bottom: 20px; border-radius: 7px;">
+            <h4 style="padding-bottom: 10px;"> Avaiable on Project<em><strong>Coin</strong></em> &ThickSpace; <span class=" text-muted badge badge-pill badge-light">10</span></h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Rank</th>
+                        <th scope="col">Coin</th>
+                        <th scope="col">Trend</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- These should move depending on which one is ranked higher either at the end of the day or throughout the day ? -->
+                    <tr>
+                        <th scope="row">
+                            <!-- Rank Number: 1 for testing -->1</th>
+                        <td>
+                            <!-- Product Name: Bitcoin for testing --><a href="{% url 'bitcoin' %}">Bitcoin</a></td>
+                        <td>
+                            <!-- High for the day and/or trend: random trend for testing --><span class="badge badge-pill badge-danger"><i
+                                    class="fas fa-arrow-alt-circle-down"></i></span> -1.32% </td>
+                        <td>
+                            <!-- Price: random price for the day for testing--><span class="badge badge-pill badge-danger"><i
+                                    class="fas fa-arrow-alt-circle-down"></i></span> $ 3,240.30 </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Stellar</td>
+                        <td><span class="badge badge-pill badge-success"><i class="fas fa-arrow-alt-circle-up"></i></span>
+                            + 2.57% </td>
+                        <td><span class="badge badge-pill badge-success"><i class="fas fa-arrow-alt-circle-up"></i></span>
+                            $ 0.10</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Litecoin</td>
+                        <td><span class="badge badge-pill badge-danger"><i class="fas fa-arrow-alt-circle-down"></i></span> -3.11%</td>
+                        <td><span class="badge badge-pill badge-success"><i class="fas fa-arrow-alt-circle-up"></i></span> $ 4.71</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
