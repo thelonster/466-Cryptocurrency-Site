@@ -9,6 +9,7 @@ urlpatterns = [
     path('about/', views.about, name="about"),
     path('register/', views.register, name="register"),
     path('login/', views.login, name="login"),
+    path('coins/', views.coins, name="coins"),
     path('bitcoin/', views.bitcoin, name="bitcoin"),
     path('litecoin/', views.litecoin, name="litecoin"),
     path('ethereum/', views.ethereum, name="ethereum"),
