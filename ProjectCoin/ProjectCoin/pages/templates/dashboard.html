@@ -9,63 +9,78 @@
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        
+
     </nav>
 
-    <div class="spacer" style="padding-top: 25px; padding-bottom: 25px;"> </div>
-
-
-    <ul class="nav nav-pills">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Following <i class="fas fa-star"></i></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Discover <i class="fas fa-search-dollar"></i></a>
-        </li>
-    </ul>
-    <div class="row-sm-12"> <!-- Each row can hold 3 currencies-->
-        <div class="card-group text-dark">
-            <!-- One Card is One Currency -->
-            <div class="card">
-                <!--Graph would go here-->
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <!--Coin Name would go here -->
-                    </h5>
-                    <p class="card-text">Price:
-                        <!-- Price here -->
-                    </p>
-                    <small class="text-muted">Last updated 3 mins ago</small> <!-- Hopefully we can pull when it was last updated, if not we can delete this section-->
-                </div>
-            </div>
-            <!-- One Card is One Currency -->
-            <div class="card">
-                <!--Graph would go here-->
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <!--Coin Name would go here -->
-                    </h5>
-                    <p class="card-text">Price:
-                        <!-- Price here -->
-                    </p>
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-            </div>
-            <!-- One Card is One Currency -->
-            <div class="card">
-                <!--Graph would go here-->
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <!--Coin Name would go here -->
-                    </h5>
-                    <p class="card-text">Price:
-                        <!-- Price here -->
-                    </p>
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-            </div>
+    <div class="spacer" style="padding-top: 15px; padding-bottom: 5px;">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            You aren't following any coins!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
     </div>
+
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="pills-folllowing-tab" data-toggle="pill" href="#following" role="tab"
+                aria-controls="pills-following" aria-selected="true">Following <i class="fas fa-star"></i></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-discover-tab" data-toggle="pill" href="#discover" role="tab"
+                aria-controls="pills-discover" aria-selected="false">Discover <i class="fas fa-search-dollar"></i></a>
+        </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col"> </th>
+                        <th scope="col">Rank</th>
+                        <th scope="col">Coin</th>
+                        <th scope="col">Trend</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- These should move depending on which one is ranked higher either at the end of the day or throughout the day ? -->
+                    <tr>
+                        <th scope="row">
+                                <i class="fas fa-star"></i></th>
+                                <td>1</td>
+                        <td>
+                            <!-- Product Name: Bitcoin for testing --><a href="{% url 'bitcoin' %}">Bitcoin</a></td>
+                        <td>
+                            <!-- High for the day and/or trend: random trend for testing --><span class="badge badge-pill badge-danger"><i
+                                    class="fas fa-arrow-alt-circle-down"></i></span> -1.32% </td>
+                        <td>
+                            <!-- Price: random price for the day for testing--><span class="badge badge-pill badge-danger"><i
+                                    class="fas fa-arrow-alt-circle-down"></i></span> $ 3,240.30 </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><i class="fas fa-star"></i></th>
+                        <td>2</td>
+                        <td>Stellar</td>
+                        <td><span class="badge badge-pill badge-success"><i class="fas fa-arrow-alt-circle-up"></i></span>
+                            + 2.57% </td>
+                        <td><span class="badge badge-pill badge-success"><i class="fas fa-arrow-alt-circle-up"></i></span>
+                            $ 0.10</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><i class="far fa-star"></i></th>
+                        <td>3</td>
+                        <td>Litecoin</td>
+                        <td><span class="badge badge-pill badge-danger"><i class="fas fa-arrow-alt-circle-down"></i></span> -3.11%</td>
+                        <td><span class="badge badge-pill badge-success"><i class="fas fa-arrow-alt-circle-up"></i></span> $ 4.71</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="pills-discover" role="tabpanel" aria-labelledby="pills-discover-tab">...</div>
+
+    </div>
+
 
 </div>
 
