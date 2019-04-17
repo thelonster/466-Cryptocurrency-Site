@@ -169,9 +169,9 @@ function createGraph(cryptoData, indices) {
     var price = close[size - 1];
     var trend = close[size - 1] - close[0];
     var trendPercent = trend / close[0];
-    $("#high").text("Highest: " + highest.toString());
-    $("#low").text("Lowest: " + lowest.toString());
-    $("#price").text("Price: " + price.toString());
+    $("#high").text("Highest: $" + highest.toString() + " USD");
+    $("#low").text("Lowest: $" + lowest.toString() + " USD");
+    $("#price").text("Price: $" + price.toString() + " USD");
     if (loaded) {
       graph.destroy();
     }
