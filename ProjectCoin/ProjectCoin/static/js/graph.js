@@ -153,14 +153,25 @@ function createGraph(cryptoData, indices) {
     var high = [];
     var jsonData = JSON.parse(cryptoData);
     var tempData = jsonData.data;
+    var highest = tempData[0][1], lowest = tempData[0][2];
     var size = Object.keys(tempData).length;
     for (var a = 0; a < size; a++) {
         close.push(tempData[a][0]);
         low.push(tempData[a][2]);
         high.push(tempData[a][1]);
+        if (tempData[a][2] < lowest) {
+            lowest = tempData[a][2];
+        }
+        if (tempData[a][1] > highest) {
+            highest > tempData[a][1];
+        }
     }
+    var price = close[size - 1];
     var trend = close[size - 1] - close[0];
     var trendPercent = trend / close[0];
+    $("#high").text("Highest: $" + highest.toString() + " USD");
+    $("#low").text("Lowest: $" + lowest.toString() + " USD");
+    $("#price").text("Price: $" + price.toString() + " USD");
     if (loaded) {
       graph.destroy();
     }
