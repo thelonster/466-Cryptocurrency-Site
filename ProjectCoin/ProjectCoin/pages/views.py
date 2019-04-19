@@ -2,10 +2,11 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from .graph import get_df
 from .forms import UserRegister
-from django.contrib.auth import authenticate, login 
+from django.contrib.auth import authenticate, login, logout 
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 def index(request):
     return render(request, "index.html", {})
@@ -24,15 +25,16 @@ def register(request):
     return render(request, "register.html", {'user_form':user_form, 'registered':registered})
 
 def user_login(request):
-    logged_in = False
+    #logged_in = False
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = authenticate(username=username, password=password)
-        if user:
+        user = authenticate(request,username=username, password=password)
+        if user is not None:
             login(request, user)
-            logged_in = True
-            return render(request, "index.html", {'user_name':username, 'logged_in':logged_in}) 
+            #logged_in = True
+            return render(request, "index.html") 
+            #return HttpResponse(user.username);
         else:
             return HttpResponse("Invalid user or password")
     else:
