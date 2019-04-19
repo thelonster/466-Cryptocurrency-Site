@@ -49,25 +49,27 @@
                 </ul>
                 <div class="collapse navbar-collapse justify-content-end">
                     <ul class="navbar-nav">
-                        {% if logged_in %}
+                        {%if user.is_authenticated%}
                             <li class="nav-item active navspacing-right">
-                                <a class="nav-link text-white" href="{% url 'dashboard'%}"><b>My Profile</b></a>
+                                <a class="nav-link text-white" href="{% url 'dashboard'%}"><b>{{user.username}}</b></a>
                             </li>
-                        {%else%}
-                        <li class="nav-item active navspacing-right">
-                            <a class="nav-link text-white" href="{% url 'user_login' %}"><b>Login</b></a>
-                        </li>
-                        <li class="nav-item active navspacing-right">
-                            <a class="nav-link text-white" href="{% url 'register' %}"><b>Register</b></a>
-                        </li>
+                            <li class="nav-item active navspacing-right">
+                                <a class="nav-link text-white" href="{% url 'user_logout'%}"><b>Logout</b></a>
+                            </li>
+                        {%else%}    
+                            <li class="nav-item active navspacing-right">
+                                <a class="nav-link text-white" href="{% url 'user_login' %}"><b>Login</b></a>
+                            </li>
+                            <li class="nav-item active navspacing-right">
+                                <a class="nav-link text-white" href="{% url 'register' %}"><b>Register</b></a>
+                            </li>
                         {%endif%}
                     </ul>
-                </div>
+                </div> 
             </div>
         </nav>
-
     </div>
-
+    
     {% block content %}
     {% endblock %}
 
