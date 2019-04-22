@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-#from django.contrib.auth import login, authenticate
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from .verify import customerForm
 from django.http import JsonResponse
@@ -12,17 +13,33 @@ def index(request):
     return render(request, "index.html", {})
 
 def register(request):
+    registered=False
     if request.method == 'POST':
-        verification = customerForm(request.POST)
-        if verification.is_valid():
-            verification.save()
-            return redirect('register')
+        user_form = UserRegister(data=request.POST)
+        if user_form.is_valid():
+            user_form.save()
+            registered=True
         else:
-            verification =customerForm()
-    return render(request,'register.html',{})
+            print(user_form.errors)
+    else:
+        user_form = UserRegister()
+    return render(request, "register.html", {'user_form':user_form, 'registered':registered})
 
-def login(request):
-    return render(request, "login.html", {})
+def user_login(request):
+    #logged_in = False
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request,username=username, password=password)
+        if user is not None:
+            login(request, user)
+            #logged_in = True
+            return render(request, "index.html") 
+            #return HttpResponse(user.username);
+        else:
+            return HttpResponse("Invalid user or password")
+    else:
+        return render(request, "login.html", {})
 
 def coins(request):
     return render(request, "coins.html",{})
@@ -38,7 +55,7 @@ def litecoin(request):
 
 def ethereum(request):
     return render(request, "ethereum.html",{})
-
+@login_required
 def dashboard(request):
     return render(request, "dashboard.html",{})
 
