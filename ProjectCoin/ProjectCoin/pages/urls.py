@@ -10,7 +10,7 @@ urlpatterns = [
     path('about/', views.about, name="about"),
     path('logout/', auth_views.LogoutView.as_view(template_name='index.html'), name="user_logout"),
     url(r'^register/$', views.register, name="register"),
-    path('login/', views.user_login, name="login"),
+    path('login/', views.user_login, name="user_login"),
     path('coins/', views.coins, name="coins"),
     path('bitcoin/', views.bitcoin, name="bitcoin"),
     path('litecoin/', views.litecoin, name="litecoin"),
