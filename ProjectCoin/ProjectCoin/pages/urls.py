@@ -3,6 +3,7 @@ from django.urls import path
 from django.conf.urls import url
 from . import views
 from .views import get_crypto_data, get_year_data, get_month_data, get_week_data, get_day_data, get_hour_data
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', views.index, name="index"),
