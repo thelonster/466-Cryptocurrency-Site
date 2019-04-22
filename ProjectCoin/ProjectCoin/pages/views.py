@@ -7,7 +7,6 @@ from .verify import customerForm
 from django.http import JsonResponse
 from datetime import datetime, timezone
 from .graph import get_df
-from .forms import UserRegister
 
 # Create your views here.
 def index(request):
@@ -51,8 +50,17 @@ def about(request):
 def bitcoin(request):
     return render(request, "bitcoin.html",{})
 
+def bitcoincash(request):
+    return render(request, "bitcoincash.html",{})
+
 def litecoin(request):
     return render(request, "litecoin.html",{})
+
+def xrp(request):
+    return render(request, "xrp.html",{})
+
+def stellar(request):
+    return render(request, "stellar.html",{})
 
 def ethereum(request):
     return render(request, "ethereum.html",{})
