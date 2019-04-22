@@ -7,6 +7,7 @@ from .verify import customerForm
 from django.http import JsonResponse
 from datetime import datetime, timezone
 from .graph import get_df
+from .forms import UserRegister
 
 # Create your views here.
 def index(request):
@@ -34,7 +35,7 @@ def user_login(request):
         if user is not None:
             login(request, user)
             #logged_in = True
-            return render(request, "index.html") 
+            return render(request, "index.html")
             #return HttpResponse(user.username);
         else:
             return HttpResponse("Invalid user or password")
