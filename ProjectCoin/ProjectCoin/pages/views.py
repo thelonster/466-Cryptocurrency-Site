@@ -7,6 +7,7 @@ from .verify import customerForm
 from django.http import JsonResponse
 from datetime import datetime, timezone
 from .graph import get_df
+from .forms import UserRegister
 
 # Create your views here.
 def index(request):
