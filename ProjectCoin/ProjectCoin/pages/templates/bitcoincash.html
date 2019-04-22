@@ -1,0 +1,98 @@
+{% extends 'coinbase.html' %}
+
+{% block title %}Bitcoin Cash (BCH){% endblock %}
+
+<script>
+    {% block jquery %}
+    var endpoint = 'api/cryptodata/'
+    var defaultData = []
+    var labels = [`Low`, 'Close', 'High'];
+    $.ajax({
+        method: "GET",
+        url: endpoint,
+        data: 'BCH',
+        success: function (result) {
+            defaultData = result
+            createGraph()
+        },
+        error: function (err_data) {
+            console.log("error")
+            console.log(err_data)
+        }
+    })
+
+    function createGraph() {
+        var close = [];
+        var low = [];
+        var high = [];
+        var jsonData = JSON.parse(defaultData);
+        var tempData = jsonData.data;
+        var indices = jsonData.index;
+        var size = Object.keys(tempData).length;
+        for (var a = 0; a < size; a++) {
+            close.push(tempData[a][0]);
+            low.push(tempData[a][2]);
+            high.push(tempData[a][1]);
+        }
+        var g1 = document.getElementById("BCHgraph");
+        var graph = new Chart(g1, {
+            type: 'line',
+            data: {
+                labels: indices,
+                datasets: [
+                    {
+                        label: "Close",
+                        fill: false,
+                        data: close,
+                        backgroundColor: 'rgba(232, 228, 33, 0.2)',
+                        borderColor: 'rgba(232, 228, 33, 1)'
+                    },
+                    {
+                        label: "Low",
+                        fill: false,
+                        data: low,
+                        backgroundColor: 'rgba(255, 10, 10, 0.2)',
+                        borderColor: 'rgba(255, 10, 10, 1)'
+                    },
+                    {
+                        label: "High",
+                        fill: false,
+                        data: high,
+                        backgroundColor: 'rgba(10, 255, 10, 0.2)',
+                        borderColor: 'rgba(10, 255, 10, 1)'
+                    }
+                ]
+            }
+        })
+    }
+    {% endblock %}
+</script>
+
+{% block title2 %}Bitcoin{% endblock %}
+
+{% block graph %}
+<canvas id="BCHgraph" style="padding: 5px;"></canvas>
+{% endblock %}
+
+
+
+
+<!-- Under the graph -->
+{% block about%}
+Bitcoin Cash is a currency born into the digital age. When using Bitcoin for the first time people should get an idea of how
+it works. Digital money is different than the traditional finance world is used to. It offers three core values in
+which many currencies cannot attain: Decentralization, Open Source, and Peer-to-Peer networking. [...] Bitcoin is a truly beautiful innovation, and it has the capacity to change the world.
+{% endblock %}
+
+
+{% block compare %}
+
+{% endblock %}
+
+{% block quote %}
+<p class="mb-0">“Bitcoin is one of the most important inventions in all of human history. For the first time ever,
+    anyone can send or receive any amount of money with anyone else, anywhere on the planet, conveniently and without
+    restriction. It's the dawn of a better, more free world.
+    ”</p>
+<footer class="blockquote-footer">Roger Ver, <cite title="Source Title">CEO Bitcoin.com</cite></footer>
+{% endblock %}
