@@ -7,8 +7,9 @@ from .views import get_crypto_data, get_year_data, get_month_data, get_week_data
 urlpatterns = [
     path('', views.index, name="index"),
     path('about/', views.about, name="about"),
-    path('register/', views.register, name="register"),
-    path('login/', views.login, name="login"),
+    path('logout/', auth_views.LogoutView.as_view(template_name='index.html'), name="user_logout"),
+    url(r'^register/$', views.register, name="register"),
+    path('login/', views.user_login, name="login"),
     path('coins/', views.coins, name="coins"),
     path('bitcoin/', views.bitcoin, name="bitcoin"),
     path('litecoin/', views.litecoin, name="litecoin"),
