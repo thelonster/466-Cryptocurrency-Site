@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .verify import customerForm
 from django.http import JsonResponse
 from datetime import datetime, timezone
-from .graph import get_df
+from .graph import get_df, get_multiple_price
 from .forms import UserRegister
 
 # Create your views here.
@@ -138,4 +138,8 @@ def get_hour_data(request, *args):
     lasthour = timestamp - 3600
     # "minute" passed an argument to get minute data from CryptoCompare
     data = get_df(lasthour, timestamp, coin, "minute")
+    return JsonResponse(data, safe=False)
+
+def get_multiple_data(request, *args):
+    data = get_multiple_price()
     return JsonResponse(data, safe=False)

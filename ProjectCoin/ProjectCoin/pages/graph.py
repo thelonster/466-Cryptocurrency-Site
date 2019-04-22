@@ -57,6 +57,11 @@ def get_minute_data(coin):
     ipdata = r.json()
     return ipdata
 
+def get_multiple_price():
+    url = "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,XRP,BCH,LTC,XLM,ETC,BAT,ZEC,REP&tsyms=USD"
+    r = requests.get(url)
+    ipdata = r.json()
+    return ipdata
 """
 today = datetime.today()
 timestamp = today.timestamp()
