@@ -10,7 +10,7 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                            <th scope="col"> </th>
+                        <th scope="col"> </th>
                         <th scope="col">Rank</th>
                         <th scope="col">Coin</th>
                         <th scope="col">Trend</th>
@@ -18,19 +18,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- These should move depending on which one is ranked higher either at the end of the day or throughout the day ? -->
                     <tr>
                             <th scope="row">
                                     <i class="fas fa-star"></i></th>
                                     <td>1</td>
-                        <td>
-                            <!-- Product Name: Bitcoin for testing --><a href="{% url 'bitcoin' %}">Bitcoin</a></td>
+                        <td><a href="{% url 'bitcoin' %}">Bitcoin</a></td>
                         <td id="BTCpct">
-                            <!-- High for the day and/or trend: change badge-danger for RED and badge-success for GREEN --><span class="badge badge-pill badge-danger"><i
-                                    class="fas fa-arrow-alt-circle-down"></i></span></td>
+                           <span class="badge badge-pill badge-danger"><i class="fas fa-arrow-alt-circle-down"></i></span></td>
                         <td id="BTCprice">
-                            <!-- Price: random price for the day for testing--><span class="badge badge-pill badge-danger"><i
-                                    class="fas fa-arrow-alt-circle-down"></i></span></td>
+                           <span class="badge badge-pill badge-danger"><i class="fas fa-arrow-alt-circle-down"></i></span></td>
                     </tr>
                     <tr>
                             <th scope="row">
@@ -68,7 +64,7 @@
                             <th scope="row">
                                     <i class="fas fa-star"></i></th>
                                     <td>6</td>
-                        <td>Stellar Lumens</td>
+                        <td><a href="{% url 'stellar' %}">Stellar Lumen</a></td>
                         <td id="XLMpct"><span class="badge badge-pill badge-danger"><i class="fas fa-arrow-alt-circle-down"></i></span></td>
                         <td id="XLMprice"><span class="badge badge-pill badge-success"><i class="fas fa-arrow-alt-circle-up"></i></span></td>
                     </tr>
@@ -76,7 +72,7 @@
                             <th scope="row">
                                     <i class="fas fa-star"></i></th>
                                     <td>7</td>
-                        <td>Ethereum Classic</td>
+                                    <td><a href="{% url 'eclassic' %}">Ethereum Classic</a></td>
                         <td id="ETCpct"><span class="badge badge-pill badge-danger"><i class="fas fa-arrow-alt-circle-down"></i></span></td>
                         <td id="ETCprice"><span class="badge badge-pill badge-success"><i class="fas fa-arrow-alt-circle-up"></i></span></td>
                     </tr>
@@ -84,7 +80,7 @@
                             <th scope="row">
                                     <i class="fas fa-star"></i></th>
                                     <td>8</td>
-                        <td>Basic Attention Token</td>
+                                    <td><a href="{% url 'attn' %}">Basic Attention Token</a></td>
                         <td id="BATpct"><span class="badge badge-pill badge-danger"><i class="fas fa-arrow-alt-circle-down"></i></span></td>
                         <td id="BATprice"><span class="badge badge-pill badge-success"><i class="fas fa-arrow-alt-circle-up"></i></span></td>
                     </tr>
@@ -92,7 +88,7 @@
                             <th scope="row">
                                     <i class="fas fa-star"></i></th>
                                     <td>9</td>
-                        <td>Zcash</td>
+                                    <td><a href="{% url 'zcash' %}">Zcash</a></td>
                         <td id="ZECpct"><span class="badge badge-pill badge-danger"><i class="fas fa-arrow-alt-circle-down"></i></span></td>
                         <td id="ZECprice"><span class="badge badge-pill badge-success"><i class="fas fa-arrow-alt-circle-up"></i></span></td>
                     </tr>
@@ -100,7 +96,7 @@
                             <th scope="row">
                                     <i class="fas fa-star"></i></th>
                                     <td>10</td>
-                        <td>Ox</td>
+                                    <td><a href="{% url '0x' %}">0x</a></td>
                         <td id="ZRXpct"><span class="badge badge-pill badge-danger"><i class="fas fa-arrow-alt-circle-down"></i></span></td>
                         <td id="ZRXprice"><span class="badge badge-pill badge-success"><i class="fas fa-arrow-alt-circle-up"></i></span></td>
                     </tr>
