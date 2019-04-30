@@ -1,26 +1,26 @@
 {% extends 'coinbase.html' %}
 
-{% block title %}0x{% endblock %}
+{% block title %}Basic Attention Token{% endblock %}
 
 <script>
     {% block jquery%}
-    createDayGraph('ZRX');
+    createDayGraph('BAT');
     $(".hour").click(function(){
-      createHourGraph('ZRX');
+      createHourGraph('BAT');
     });
     $(".day").click(function(){
-      createDayGraph('ZRX');
+      createDayGraph('BAT');
     });
     $(".week").click(function(){
-      createWeekGraph('ZRX');
+      createWeekGraph('BAT');
     });
     $(".month").click(function(){
-      createMonthGraph('ZRX');
+      createMonthGraph('BAT');
     });
     {% endblock %}
     </script>
 
-{% block title2 %}0x (ZRX){% endblock %}
+{% block title2 %}Basic Attention Token (BAT){% endblock %}
 
 {% block graph %}
 <canvas id="graph" style="padding: 5px;"></canvas>
@@ -28,21 +28,18 @@
 
 <!-- Under the graph -->
 {% block quote %}
-<p class="mb-0">“Anyone in the world can use 0x to service a wide variety of markets ranging from gaming items to financial instruments to assets that could have never existed before.
-    ”</p>
-<footer class="blockquote-footer"><cite title="Source Title">0xproject.com</cite></footer>
+<p class="mb-0">“Introducing a decentralized, transparent digital ad exchange based on Ethereum Blockchain.”</p>
+<footer class="blockquote-footer"><cite title="Source Title">basicattentiontoken.com</cite></footer>
 {% endblock %}
 
 
 <!-- under quote -->
 {% block about%}
-ZRX is an Ethereum token that is used to power the 0x protocol. The protocol itself is designed to allow Ethereum tokens to be traded at a low cost directly from your wallet.
-<br>
-<small class="text-muted">
-    Taken from <a href="https://www.coinbase.com/price/0x">this article</a>, on CoinBase.com
+BAT is an Ethereum token that powers Brave Software's blockchain-based digital advertising platform. Internet users who browse the web using Brave's free web browser (available at Brave.com) can choose to replace the ads they see with ads on Brave's ad network. Users then receive BAT from advertisers as compensation for their attention.<small class="text-muted">
+    Taken from <a href="https://www.coinbase.com/price/basic-attention-token">this article</a>, on CoinBase.com
 </small>
 <p>
-    <i class="fas fa-globe"></i> <a href="https://0xproject.com/">Official Website</a><br>
-    <i class="far fa-file-alt"></i>&ThickSpace;<a href="https://0xproject.com/pdfs/0x_white_paper.pdf">Whitepaper</a>
+    <i class="fas fa-globe"></i> <a href="https://basicattentiontoken.org/">Official Website</a><br>
+    <i class="far fa-file-alt"></i>&ThickSpace;<a href="https://basicattentiontoken.org/BasicAttentionTokenWhitePaper-4.pdf">Whitepaper</a>
 </p>
 {% endblock %}
