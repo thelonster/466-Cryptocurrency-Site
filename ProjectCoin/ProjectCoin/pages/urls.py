@@ -15,16 +15,16 @@ urlpatterns = [
       
     # 10 coin pages
     #changed the path on the website from /coin-name to /coins/coin-name
-    path('coins/bitcoin/', views.bitcoin, name="bitcoin"),
-    path('coins/litecoin/', views.litecoin, name="litecoin"),
-    path('coins/bitcoincash/', views.bitcoincash, name="bitcoincash"),
-    path('coins/0x/', views.Ox, name="0x"),
-    path('coins/basic-attention-token/', views.attn, name="attn"),
-    path('coins/xrp/', views.xrp, name="xrp"),
-    path('coins/zcash/', views.zcash, name="zcash"),
-    path('coins/stellar/', views.stellar, name="stellar"),
-    path('coins/ethereum/', views.ethereum, name="ethereum"),
-    path('coins/ethereum-classic/', views.eclassic, name="eclassic"),
+    path('bitcoin/', views.bitcoin, name="bitcoin"),
+    path('litecoin/', views.litecoin, name="litecoin"),
+    path('bitcoincash/', views.bitcoincash, name="bitcoincash"),
+    path('0x/', views.Ox, name="0x"),
+    path('basic-attention-token/', views.attn, name="attn"),
+    path('xrp/', views.xrp, name="xrp"),
+    path('zcash/', views.zcash, name="zcash"),
+    path('stellar/', views.stellar, name="stellar"),
+    path('ethereum/', views.ethereum, name="ethereum"),
+    path('ethereum-classic/', views.eclassic, name="eclassic"),
 
     path('dashboard/', views.dashboard, name="dashboard"),
     url(r'api/cryptodata/$', get_crypto_data, name='crypto-data'),
