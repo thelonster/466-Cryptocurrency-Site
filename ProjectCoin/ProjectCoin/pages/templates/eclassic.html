@@ -1,0 +1,49 @@
+{% extends 'coinbase.html' %}
+
+{% block title %}Ethereum Classic{% endblock %}
+
+<script>
+    {% block jquery%}
+    createDayGraph('ETC');
+    $(".hour").click(function(){
+      createHourGraph('ETC');
+    });
+    $(".day").click(function(){
+      createDayGraph('ETC');
+    });
+    $(".week").click(function(){
+      createWeekGraph('ETC');
+    });
+    $(".month").click(function(){
+      createMonthGraph('ETC');
+    });
+    {% endblock %}
+    </script>
+
+{% block title2 %}Ethereum Classic (ETC){% endblock %}
+
+{% block graph %}
+<canvas id="graph" style="padding: 5px;"></canvas>
+{% endblock %}
+
+<!-- Under the graph -->
+{% block quote %}
+<p class="mb-0">“This may be best explained with an analogy, imagine Bitcoin as a landline phone—it does one thing very well. ETC is like a smartphone—it can do everything Bitcoin can and much more.
+
+    ”</p>
+<footer class="blockquote-footer"><cite title="Source Title">etheruemclassic.org</cite></footer>
+{% endblock %}
+
+
+<!-- under quote -->
+{% block about%}
+Ethereum Classic is a cryptocurrency with a special focus on immutability, popularly expressed as “code is law.”
+<br>
+<small class="text-muted">
+    Taken from <a href="https://www.coinbase.com/price/ethereum-classic">this article</a>, on CoinBase.com
+</small>
+<p>
+    <i class="fas fa-globe"></i> <a href="https://ethereumclassic.org/">Official Website</a><br>
+    <i class="far fa-file-alt"></i>&ThickSpace;<a href="https://ethereumclassic.github.io/assets/etc-thesis.pdf">Whitepaper</a>
+</p>
+{% endblock %}
