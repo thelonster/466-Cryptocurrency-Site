@@ -1,0 +1,46 @@
+{% extends 'coinbase.html' %}
+
+{% block title %}Zcash{% endblock %}
+
+<script>
+    {% block jquery%}
+    createDayGraph('ZEC');
+    $(".hour").click(function(){
+      createHourGraph('ZEC');
+    });
+    $(".day").click(function(){
+      createDayGraph('ZEC');
+    });
+    $(".week").click(function(){
+      createWeekGraph('ZEC');
+    });
+    $(".month").click(function(){
+      createMonthGraph('ZEC');
+    });
+    {% endblock %}
+    </script>
+
+{% block title2 %}Zcash (ZEC){% endblock %}
+
+{% block graph %}
+<canvas id="graph" style="padding: 5px;"></canvas>
+{% endblock %}
+
+<!-- Under the graph -->
+{% block quote %}
+<p class="mb-0">“The future of money is digital, decentralized and private.    ”</p>
+<footer class="blockquote-footer"><cite title="Source Title">z.cash</cite></footer>
+{% endblock %}
+
+
+<!-- under quote -->
+{% block about%}
+Zcash is a cryptocurrency that offers two types of addresses: transparent addresses that are publicly visible on the Zcash blockchain and shielded addresses that are more private. Coinbase customers can receive Zcash from both transparent and shielded addresses and send Zcash to transparent addresses. Sending to shielded addresses is not supported at this time.<br>
+<small class="text-muted">
+    Taken from <a href="https://www.coinbase.com/price/zcash">this article</a>, on CoinBase.com
+</small>
+<p>
+    <i class="fas fa-globe"></i> <a href="https://z.cash/">Official Website</a><br>
+    <i class="far fa-file-alt"></i>&ThickSpace;<a href="https://raw.githubusercontent.com/zcash/zips/master/protocol/protocol.pdf">Whitepaper</a>
+</p>
+{% endblock %}
