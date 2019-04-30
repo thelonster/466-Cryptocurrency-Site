@@ -3,28 +3,28 @@
 {% block title %}Litecoin (LTC){% endblock %}
 
 <script>
-{% block jquery %}
-createDayGraph('LTC');
-$(".hour").click(function(){
-  createHourGraph('LTC');
-});
-$(".day").click(function(){
-  createDayGraph('LTC');
-});
-$(".week").click(function(){
-  createWeekGraph('LTC');
-});
-$(".month").click(function(){
-  createMonthGraph('LTC');
-});
-{% endblock %}
-</script>
+    {% block jquery%}
+    createDayGraph('LTC');
+    $(".hour").click(function(){
+      createHourGraph('LTC');
+    });
+    $(".day").click(function(){
+      createDayGraph('LTC');
+    });
+    $(".week").click(function(){
+      createWeekGraph('LTC');
+    });
+    $(".month").click(function(){
+      createMonthGraph('LTC');
+    });
+    {% endblock %}
+    </script>
 
 {% block graph %}
 <canvas id="graph"></canvas>
 {% endblock %}
 
-{% block title2 %}Litecoin{% endblock %}
+{% block title2 %}Litecoin (LTC){% endblock %}
 
 
 
@@ -44,6 +44,11 @@ new age of finance.
 
 <br><em><small class="text-muted">All information taken from the official <a href="https://litecoin.com/en/">Litecoin</a>
         webpage.</small> </em>
+
+        <p>
+            <i class="fas fa-globe"></i> <a href="https://litecoin.org/">Official Website</a><br>
+            <i class="far fa-file-alt"></i>&ThickSpace;<a href="http://ripple.com/files/ripple_consensus_whitepaper.pdf">Whitepaper</a>
+        </p>
 {% endblock %}
 
 {% block quote %}
