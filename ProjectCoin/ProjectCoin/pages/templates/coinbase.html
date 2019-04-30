@@ -25,7 +25,7 @@
 <body class="box1">
     <div>
         <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-primary navformat">
-            <a class="navbar-brand text-white" href="#">Project<em><b>Coin</b></em></a>
+            <a class="navbar-brand text-white" href="{% url 'index' %}">Project<em><b>Coin</b></em></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -70,29 +70,36 @@
             <h1 style="padding-top: 15px; padding-bottom: 15px;">{% block title %}{% endblock %}</h1>
         </div>
         <div class="container bg-white text-dark" style="border-radius: 7px; padding-left: 5px; padding-top: 5px;">
-            <div class="row">
-                <div class="col">
-                    <button type="button" class="btn btn-primary hour">1 hour</button>
-                    <button type="button" class="btn btn-primary day">24 hours</button>
-                    <button type="button" class="btn btn-primary week">7 days</button>
-                    <button type="button" class="btn btn-primary month">1 month</button>
-                    <button type="button" class="btn btn-primary" disabled>3 months</button>
-                    <button type="button" class="btn btn-primary" disabled>6 months</button>
-                    <button type="button" class="btn btn-primary" disabled>12 months</button>
-                </div>
-            </div>
             <div class="row" style="padding: 5px;">
                 {% block graph %}{% endblock %}
             </div>
             <div class="row">
-                <div class="col-sm-3">
-                    <h6 class="card-subtitle" id="high">Highest: </h6>
+                <div class="col">
+                    <center>
+                    <button type="button" class="btn btn-primary hour" style="width: 15vw;">1 hour</button>
+                    <button type="button" class="btn btn-primary day" style="width: 15vw;">24 hours</button>
+                    <button type="button" class="btn btn-primary week" style="width: 15vw;">7 days</button>
+                    <button type="button" class="btn btn-primary month" style="width: 15vw;">1 month</button>
+                    </center>
                 </div>
-                <div class="col-sm-3">
-                    <h6 class="card-subtitle" id="low">Lowest: </h6>
+            </div>
+            <div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+                <div class="col">
+                    <center>
+                    <h6 class="card-subtitle" id="high">Highest </h6>
+                    <p>$</p>
+                </center>
                 </div>
-                <div class="col-sm-3">
-                    <h6 class="card-subtitle" id="price">Price: </h6>
+                <div class="col">
+                    <center><h6 class="card-subtitle" id="low">Lowest </h6>
+                    <p>$</p>
+                    </center>
+                    
+                </div>
+                <div class="col">
+                        <center><h6 class="card-subtitle" id="price">Price </h6>
+                            <p>$</p>
+                            </center>
                 </div>
             </div>
         </div>
@@ -107,23 +114,60 @@
     </div>
     <div class="container" style="border-radius: 7px; padding-top: 20px;">
         <div class="row">
-            <div class="col-sm-5">
+            <div class="col">
                 <h4 style="padding-top: 5px; padding-bottom: 5px;">About {% block title2 %}{% endblock %}</h4>
                 <p>{% block about %}{% endblock %}</p>
-            </div>
-            <div class="col-sm-7 bg-white text-muted" style="border-radius: 7px;">
-                <h4 style="padding-top: 5px; padding-bottom: 5px;">
-                    Compared to Others
-                </h4>
-                {% block compare %}{% endblock %}
             </div>
         </div>
 
     </div>
-    <div class="container" style="padding-top: 20px;">
+    <div class="container" style="padding-top: 20px; margin-bottom: 40px;">
         <div class="row">
             <div class="col text-muted bg-white" style="border-radius: 7px;">
                 <h4 style="padding-top: 10px; padding-bottom: 5px;">Discover Coins</h4>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                                <th scope="col"> </th>
+                            <th scope="col">Rank</th>
+                            <th scope="col">Coin</th>
+                            <th scope="col">Trend</th>
+                            <th scope="col">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- These should move depending on which one is ranked higher either at the end of the day or throughout the day ? -->
+                        <tr>
+                                <th scope="row">
+                                        <i class="fas fa-star"></i></th>
+                                        <td>1</td>
+                            <td>
+                                <!-- Product Name: Bitcoin for testing --><a href="{% url 'bitcoin' %}">Bitcoin</a></td>
+                            <td id="BTCpct">
+                                <!-- High for the day and/or trend: change badge-danger for RED and badge-success for GREEN --><span class="badge badge-pill badge-danger"><i
+                                        class="fas fa-arrow-alt-circle-down"></i></span></td>
+                            <td id="BTCprice">
+                                <!-- Price: random price for the day for testing--><span class="badge badge-pill badge-danger"><i
+                                        class="fas fa-arrow-alt-circle-down"></i></span></td>
+                        </tr>
+                        <tr>
+                                <th scope="row">
+                                        <i class="fas fa-star"></i></th>
+                                        <td>2</td>
+                            <td><a href="{% url 'ethereum' %}">Ethereum</a></td>
+                            <td id="ETHpct"><span class="badge badge-pill badge-success"><i class="fas fa-arrow-alt-circle-up"></i></span></td>
+                            <td id="ETHprice"><span class="badge badge-pill badge-success"><i class="fas fa-arrow-alt-circle-up"></i></span></td>
+                        </tr>
+                        <tr>
+                                <th scope="row">
+                                        <i class="fas fa-star"></i></th>
+                                        <td>3</td>
+                            <td><a href="{% url 'xrp' %}">XRP</a></td>
+                            <td id="XRPpct"><span class="badge badge-pill badge-danger"><i class="fas fa-arrow-alt-circle-down"></i></span></td>
+                            <td id="XRPprice"><span class="badge badge-pill badge-success"><i class="fas fa-arrow-alt-circle-up"></i></span></td>
+                        </tr>
+                        </tbody>
+                        </table>
             </div>
         </div>
     </div>
