@@ -3,81 +3,40 @@
 {% block title %}Bitcoin Cash (XRP){% endblock %}
 
 <script>
-    {% block jquery %}
-    var endpoint = 'api/cryptodata/'
-    var defaultData = []
-    var labels = [`Low`, 'Close', 'High'];
-    $.ajax({
-        method: "GET",
-        url: endpoint,
-        data: 'XRP',
-        success: function (result) {
-            defaultData = result
-            createGraph()
-        },
-        error: function (err_data) {
-            console.log("error")
-            console.log(err_data)
-        }
-    })
-
-    function createGraph() {
-        var close = [];
-        var low = [];
-        var high = [];
-        var jsonData = JSON.parse(defaultData);
-        var tempData = jsonData.data;
-        var indices = jsonData.index;
-        var size = Object.keys(tempData).length;
-        for (var a = 0; a < size; a++) {
-            close.push(tempData[a][0]);
-            low.push(tempData[a][2]);
-            high.push(tempData[a][1]);
-        }
-        var g1 = document.getElementById("XRPgraph");
-        var graph = new Chart(g1, {
-            type: 'line',
-            data: {
-                labels: indices,
-                datasets: [
-                    {
-                        label: "Close",
-                        fill: false,
-                        data: close,
-                        backgroundColor: 'rgba(232, 228, 33, 0.2)',
-                        borderColor: 'rgba(232, 228, 33, 1)'
-                    },
-                    {
-                        label: "Low",
-                        fill: false,
-                        data: low,
-                        backgroundColor: 'rgba(255, 10, 10, 0.2)',
-                        borderColor: 'rgba(255, 10, 10, 1)'
-                    },
-                    {
-                        label: "High",
-                        fill: false,
-                        data: high,
-                        backgroundColor: 'rgba(10, 255, 10, 0.2)',
-                        borderColor: 'rgba(10, 255, 10, 1)'
-                    }
-                ]
-            }
-        })
-    }
+    {% block jquery%}
+    createDayGraph('XRP');
+    $(".hour").click(function(){
+      createHourGraph('XRP');
+    });
+    $(".day").click(function(){
+      createDayGraph('XRP');
+    });
+    $(".week").click(function(){
+      createWeekGraph('XRP');
+    });
+    $(".month").click(function(){
+      createMonthGraph('XRP');
+    });
     {% endblock %}
-</script>
-
+    </script>
 {% block title2 %}XRP{% endblock %}
 
 {% block graph %}
-<canvas id="XRPgraph" style="padding: 5px;"></canvas>
+<canvas id="graph" style="padding: 5px;"></canvas>
 {% endblock %}
 
 
 
 
 <!-- Under the graph -->
+{% block quote %}
+<p class="mb-0">“Built for enterprise use, XRP offers banks and payment
+    providers a reliable, on-demand option to source
+    liquidity for cross-border payments.
+    ”</p>
+<footer class="blockquote-footer"><cite title="Source Title">ripple.com/xrp</cite></footer>
+{% endblock %}
+
 {% block about%}
 The Ripple protocol (token represented as XRP) is meant to enable the near instant and direct transfer of money between
 two parties. Any type of currency can be exchanged, from fiat currency to gold to even airline miles. They claim to
@@ -92,14 +51,3 @@ avoid the fees and wait times of traditional banking and even cryptocurrency tra
 {% endblock %}
 
 
-{% block compare %}
-
-{% endblock %}
-
-{% block quote %}
-<p class="mb-0">“Built for enterprise use, XRP offers banks and payment
-    providers a reliable, on-demand option to source
-    liquidity for cross-border payments.
-    ”</p>
-<footer class="blockquote-footer"><cite title="Source Title">ripple.com/xrp</cite></footer>
-{% endblock %}
