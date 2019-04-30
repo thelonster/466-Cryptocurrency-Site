@@ -48,6 +48,8 @@ def coins(request):
 def about(request):
     return render(request, "about.html",{})
 
+#### 10 COIN PAGES
+
 def bitcoin(request):
     return render(request, "bitcoin.html",{})
 
@@ -57,14 +59,28 @@ def bitcoincash(request):
 def litecoin(request):
     return render(request, "litecoin.html",{})
 
+def attn(request):
+    return render(request, "attn.html",{})
+
 def xrp(request):
     return render(request, "xrp.html",{})
+
+def zcash(request):
+    return render(request, "zcash.html",{})
 
 def stellar(request):
     return render(request, "stellar.html",{})
 
+def Ox(request): # using the letter o instead of the number 0
+    return render(request, "0x.html",{})
+
 def ethereum(request):
     return render(request, "ethereum.html",{})
+
+def eclassic(request):
+    return render(request, "eclassic.html",{})
+
+####  END OF COINS
 @login_required
 def dashboard(request):
     return render(request, "dashboard.html",{})
