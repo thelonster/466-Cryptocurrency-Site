@@ -3,38 +3,48 @@
 {% block title %}Ethereum{% endblock %}
 
 <script>
-{% block jquery%}
-createDayGraph('ETH');
-$(".hour").click(function(){
-  createHourGraph('ETH');
-});
-$(".day").click(function(){
-  createDayGraph('ETH');
-});
-$(".week").click(function(){
-  createWeekGraph('ETH');
-});
-$(".month").click(function(){
-  createMonthGraph('ETH');
-});
-{% endblock %}
-</script>
+    {% block jquery%}
+    createDayGraph('ETH');
+    $(".hour").click(function(){
+      createHourGraph('ETH');
+    });
+    $(".day").click(function(){
+      createDayGraph('ETH');
+    });
+    $(".week").click(function(){
+      createWeekGraph('ETH');
+    });
+    $(".month").click(function(){
+      createMonthGraph('ETH');
+    });
+    {% endblock %}
+    </script>
+
+{% block title2 %}Ethereum (ETH){% endblock %}
 
 {% block graph %}
-<canvas id="graph"></canvas>
+<canvas id="graph" style="padding: 5px;"></canvas>
 {% endblock %}
 
-{% block title2 %}Ethereum{% endblock %}
+<!-- Under the graph -->
+{% block quote %}
+<p class="mb-0">“Ethereum is a global, decentralized platform for money and new kinds of applications. On Ethereum, you can write code that controls money, and build applications accessible anywhere in the world.
 
-
-
-{% block compare  %}
-Maecenas finibus fermentum arcu vel molestie. Etiam non justo a magna posuere ornare.
+    ”</p>
+<footer class="blockquote-footer"><cite title="Source Title">etheruem.org</cite></footer>
 {% endblock %}
 
-{% block about %}
-Nunc egestas tristique pulvinar. Vivamus aliquam euismod nibh vel efficitur. Maecenas finibus fermentum arcu vel molestie. Etiam non justo a magna posuere ornare. Praesent ac augue sit amet nisl vulputate pellentesque vel at tellus.
-{% endblock %}
 
-{% block quote%} none
+<!-- under quote -->
+{% block about%}
+Ethereum is both a cryptocurrency and a decentralized computing platform. Developers can use the platform to create decentralized applications and issue new crypto assets, known as Ethereum tokens.
+
+<br>
+<small class="text-muted">
+    Taken from <a href="https://www.coinbase.com/price/ethereum">this article</a>, on CoinBase.com
+</small>
+<p>
+    <i class="fas fa-globe"></i> <a href="https://ethereum.org/">Official Website</a><br>
+    <i class="far fa-file-alt"></i>&ThickSpace;<a href="https://github.com/ethereum/wiki/wiki/White-Paper">Whitepaper</a>
+</p>
 {% endblock %}
